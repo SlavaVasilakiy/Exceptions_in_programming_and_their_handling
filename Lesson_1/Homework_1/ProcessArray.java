@@ -31,7 +31,7 @@ public class ProcessArray {
 		int[] result = new int[arr1.length];
 		for (int i = 0; i < arr1.length; i++) {
 			if (arr2[i] == 0) {
-				throw new CustomDivideException("Делить на ноль нинада !", arr2[i]);
+				throw new CustomDivideException("Делить на ноль нинада !", i);
 			}
 			result[i] = arr1[i] / arr2[i];
 		}

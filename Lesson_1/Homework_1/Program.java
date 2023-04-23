@@ -73,6 +73,7 @@ public class Program {
 		} catch (ProcessArray.CustomDivideException e) {
 			System.out.println(e.getClass().getName());
 			System.out.println(e.getMessage());
+			System.out.printf("Элемент по индексу %d равен нулю", e.getElement());
 		}
 	}
 }
