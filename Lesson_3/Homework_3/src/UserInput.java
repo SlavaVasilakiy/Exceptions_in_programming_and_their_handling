@@ -7,7 +7,7 @@ class UserInput {
 
     private void validateInput(String[] input) throws InvalidInputException {
         if (input.length != 6) {
-            throw new InvalidInputException("Неверное количество данных. Требуется 6 значений.");
+            throw new InvalidInputException("Неверное количество данных: Требуется 6 значений.");
         }
 
         // Проверка формата даты рождения
@@ -25,10 +25,14 @@ class UserInput {
 
     public void getUserData() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите данные: Фамилия Имя Отчество Дата_рождения Номер_телефона Пол");
+        System.out.printf("%s%n%s%n%s%n%s", "Введите данные: Фамилия Имя Отчество Дата_рождения Номер_телефона Пол",
+                            "Всё через пробел, форматы данных:",
+                            "ФИО: строки, Дата рождения: dd.mm.yyyy, Телефон: цифры, Пол: m/n",
+                            "-> ");
 
-        String input = scanner.nextLine();
-        String[] data = input.split(" ");
+        String userInput = scanner.nextLine().trim(); // Удаляем лишние пробелы в начале и конце строки
+        userInput = userInput.replaceAll("\\s+", " "); // Заменяем два и более пробела на один
+        String[] data = userInput.split(" ");
 
         try {
             validateInput(data);
