@@ -27,12 +27,10 @@ class UserInput {
         Scanner scanner = new Scanner(System.in);
         System.out.printf("%s%n%s%n%s%n%s", "Введите данные: Фамилия Имя Отчество Дата_рождения Номер_телефона Пол",
                             "Всё через пробел, форматы данных:",
-                            "ФИО: строки, Дата рождения: dd.mm.yyyy, Телефон: цифры, Пол: m/f",
+                            "ФИО: строки, Дата рождения: dd.mm.yyyy, Телефон: цифры, Пол: m или f",
                             "-> ");
 
-        String userInput = scanner.nextLine().trim(); // Удаляем лишние пробелы в начале и конце строки
-        userInput = userInput.replaceAll("\\s+", " "); // Заменяем два и более пробела на один
-        String[] data = userInput.split(" ");
+        String[] data = scanner.nextLine().trim().replaceAll("\\s+"," ").split(" ");
 
         try {
             validateInput(data);
@@ -45,7 +43,7 @@ class UserInput {
             char gender = data[5].charAt(0);
 
             if (gender != 'm' && gender != 'f') {
-                throw new InvalidInputException("Неверное значение пола. Ожидается 'm' или 'f'.");
+                throw new InvalidInputException("Неверное значение пола. Ожидается m или f.");
             }
 
             tempData = new TempData(lastName, firstName, middleName, dateOfBirth, phoneNumber, gender);
